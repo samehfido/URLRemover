@@ -1,0 +1,78 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>URLRemover</RootNamespace>
+		<!--SatelliteResourceLanguages>none</SatelliteResourceLanguages-->
+		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<GenerateSatelliteAssemblies>false</GenerateSatelliteAssemblies>
+	</PropertyGroup>
+	
+	<!--<PropertyGroup Condition="'$(SkipLocalization)' == 'true'">
+		<NoLocalization>true</NoLocalization>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<SatelliteResourceLanguages />
+		<GenerateSatResx>true</GenerateSatResx>
+	</PropertyGroup>-->
+	
+	<ItemGroup>
+		<Compile Remove="ILReader\**" />
+		<Compile Remove="system.commandline.2.0.11\**" />
+		<EmbeddedResource Remove="ILReader\**" />
+		<EmbeddedResource Remove="system.commandline.2.0.11\**" />
+		<None Remove="ILReader\**" />
+		<None Remove="system.commandline.2.0.11\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove=".gitignore" />
+		<None Remove="LICENSE" />
+		<None Remove="nul" />
+		<None Remove="_inspect.ps1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- System.CommandLine (referenced directly from the extracted package; works without network restore) -->
+		<Reference Include="AsmResolver">
+			<HintPath>..\AsmResolver-master\net8.0\AsmResolver.dll</HintPath>
+		</Reference>
+		<Reference Include="AsmResolver.DotNet.Dynamic">
+			<HintPath>..\AsmResolver-master\net8.0\AsmResolver.DotNet.Dynamic.dll</HintPath>
+		</Reference>
+		<Reference Include="AsmResolver.PE">
+			<HintPath>..\AsmResolver-master\net8.0\AsmResolver.PE.dll</HintPath>
+		</Reference>
+		<Reference Include="AsmResolver.PE.Win32Resources">
+			<HintPath>..\AsmResolver-master\net8.0\AsmResolver.PE.Win32Resources.dll</HintPath>
+		</Reference>
+		<Reference Include="AsmResolver.Symbols.Pdb">
+			<HintPath>..\AsmResolver-master\net8.0\AsmResolver.Symbols.Pdb.dll</HintPath>
+		</Reference>
+		<Reference Include="System.CommandLine">
+			<HintPath>system.commandline.2.0.11\lib\net8.0\System.CommandLine.dll</HintPath>
+		</Reference>
+
+		<!-- AsmResolver Library for Assembly Parsing (replaces ILReader) -->
+		<Reference Include="AsmResolver.DotNet">
+			<HintPath>..\AsmResolver-master/net8.0/AsmResolver.DotNet.dll</HintPath>
+		</Reference>
+
+		<Reference Include="AsmResolver.PE.File">
+			<HintPath>..\AsmResolver-master/net8.0/AsmResolver.PE.File.dll</HintPath>
+		</Reference>
+
+		<!-- Required by AsmResolver's NonStringResource handling -->
+		<Reference Include="System.Resources.Extensions">
+			<HintPath>C:\Program Files\dotnet/packs/Microsoft.WindowsDesktop.App.Ref/8.0.23/ref/net8.0/System.Resources.Extensions.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+</Project>
