@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "URLRemover": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\PrivateAssemblies\\backups\\Microsoft.VisualStudio.Telemetry.dll\""
+    }
+  }
+}
